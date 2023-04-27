@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://bwc73k66kr47k"]
+
+[ext_resource type="PackedScene" uid="uid://bgusr3jw00kpq" path="res://mc.tscn" id="1_fwwq2"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wvhrq"]
+size = Vector2(1367.5, 126)
+
+[node name="Main" type="Node2D"]
+
+[node name="MC" parent="." instance=ExtResource("1_fwwq2")]
+position = Vector2(157, 66)
+
+[node name="Floor" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Floor"]
+position = Vector2(581, 656)
+shape = SubResource("RectangleShape2D_wvhrq")
+
+[node name="Sprite2D" type="Sprite2D" parent="Floor"]
