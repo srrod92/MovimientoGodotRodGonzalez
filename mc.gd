@@ -3,7 +3,7 @@ extends CharacterBody2D
 
 const SPEED = 600.0
 const JUMP_VELOCITY = 800.0
-const DASH_VELOCITY = 1000.0
+const DASH_VELOCITY = 1200.0
 const TIMETOFALL = 3
 var timeToFall = TIMETOFALL
 var canDash = true
@@ -76,7 +76,7 @@ func _physics_process(delta):
 		canJump = false
 
 	
-	if Input.is_action_pressed("right"):  #movimiento a la derecha
+	if Input.is_action_pressed("right")and not isDashing:  #movimiento a la derecha
 		position.x += SPEED*delta
 		
 	if (not Input.is_action_pressed("right") or not Input.is_action_pressed("lefth")) and not isDashing: # si no apreta las teclas de movimiento lateral y no dashea detiene la fuerza en el eje x
@@ -98,15 +98,15 @@ func _physics_process(delta):
 
 	if Input.is_action_just_pressed("dash") and canDash and not isDashing:   #chequea si puede dashear al presionar el boton de dash
 		if Input.is_action_pressed("lefth") and Input.is_action_pressed("up")and not isDashing:  #dash para arriba izquierda
-			velocity.x -= DASH_VELOCITY/1.5
-			velocity.y -= DASH_VELOCITY/1.5
+			velocity.x -= DASH_VELOCITY/1.2
+			velocity.y -= DASH_VELOCITY/1.8
 			canDash = false
 			isDashing = true
 			print("Dashea en diagonal izquierda")
 			
 		if Input.is_action_pressed("right") and Input.is_action_pressed("up")and not isDashing:  #dash para arriba izquierda
-					velocity.x += DASH_VELOCITY/1.5
-					velocity.y -= DASH_VELOCITY/1.5
+					velocity.x += DASH_VELOCITY/1.2
+					velocity.y -= DASH_VELOCITY/1.8
 					canDash = false
 					isDashing = true
 				
